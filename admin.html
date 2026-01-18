@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+</head>
+<body>
+<h1>Admin Panel</h1>
+<input type="password" id="adminKey" placeholder="Enter Admin Key">
+<button id="loginAdmin">Login</button>
+<div id="adminArea" style="display:none;">
+  <h2>Admin Features</h2>
+  <button id="viewUsers">View Users</button>
+  <div id="usersList"></div>
+</div>
+
+<script type="module" src="js/firebase.js"></script>
+<script type="module" src="js/admin.js"></script>
+</body>
+</html>
