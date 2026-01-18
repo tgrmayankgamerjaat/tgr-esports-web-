@@ -1,0 +1,25 @@
+import { db } from "./firebase.js";
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const ADMIN_KEY = "@11TGRJAAT22@#";
+
+document.getElementById("loginAdmin").onclick = () => {
+  const key = document.getElementById("adminKey").value;
+  if(key === ADMIN_KEY){
+    document.getElementById("adminArea").style.display = "block";
+    alert("Admin login successful");
+  } else {
+    alert("Wrong Key");
+  }
+};
+
+// View all users
+document.getElementById("viewUsers").onclick = async () => {
+  const querySnapshot = await getDocs(collection(db, "users"));
+  const usersList = document.getElementById("usersList");
+  usersList.innerHTML = "";
+  querySnapshot.forEach(doc => {
+    const data = doc.data();
+    usersList.innerHTML += `<p>${data.name} - Coins: ${data.coins} - Plan: ${data.plan || "No plan"}</p>`;
+  });
+};
